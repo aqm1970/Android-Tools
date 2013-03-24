@@ -55,4 +55,18 @@ abstract public class ListActivityDebug extends ListActivity {
     super.onRestart();
     Log.d(getName(), "onRestart");
   }
+
+  @Override
+  protected void onRestoreInstanceState(Bundle state)
+  {
+    super.onRestoreInstanceState(state);
+    Log.d(getName(), "onRestoreInstanceState");
+  }
+
+  @Override
+  protected void onSaveInstanceState(Bundle outState)
+  {
+    super.onSaveInstanceState(outState);
+    Log.d(getName(), "onSaveInstanceState");
+  }
 }
