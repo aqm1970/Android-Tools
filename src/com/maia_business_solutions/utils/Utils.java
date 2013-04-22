@@ -7,7 +7,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.net.Uri;
 import android.util.Log;
 
 final public class Utils {
@@ -57,5 +61,29 @@ final public class Utils {
     }
     
     return retVal;
+  }
+  
+  public static void displayGetPDFAppDialog(final Context context)
+  {
+    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+    
+    builder.setTitle("No PDF Application Found");
+    builder.setMessage("Download one from Android Market?");
+    
+    builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+    {
+      @Override
+      public void onClick(DialogInterface dialog, int which) {
+        final Intent marketIntent = new Intent(Intent.ACTION_VIEW);
+        
+        marketIntent.setData(Uri.parse("market://details?id=com.adobe.reader"));
+        
+        context.startActivity(marketIntent);
+      }
+    });
+    
+    builder.setNegativeButton("No", null);
+    
+    builder.create().show();
   }
 }
