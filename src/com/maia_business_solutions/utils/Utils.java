@@ -8,11 +8,14 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.app.AlertDialog;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.util.Log;
+import android.view.Gravity;
+import android.widget.Toast;
 
 final public class Utils {
   private static final String NAME = Utils.class.getSimpleName();
@@ -78,7 +81,19 @@ final public class Utils {
         
         marketIntent.setData(Uri.parse("market://details?id=com.adobe.reader"));
         
-        context.startActivity(marketIntent);
+        try {
+          context.startActivity(marketIntent);
+        }
+        catch (ActivityNotFoundException e) {
+          Log.e(NAME, "No activity to start market intent", e);
+          
+          final Toast toast = Toast.makeText(context,
+              "Unable to start Google Play Market", Toast.LENGTH_LONG);
+          
+          toast.setGravity(Gravity.CENTER, 0, 0);
+          
+          toast.show();
+        }
       }
     });
     
