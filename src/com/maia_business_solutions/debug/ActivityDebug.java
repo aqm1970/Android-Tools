@@ -1,6 +1,7 @@
 package com.maia_business_solutions.debug;
 
 import android.app.Activity;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -58,5 +59,20 @@ abstract public class ActivityDebug extends Activity {
   {
     super.onRestart();
     Log.d(getName(), "onRestart");
+  }
+  
+  @Override
+  public void onConfigurationChanged(Configuration newConfig)
+  {
+    Log.d(getName(), "onConfigurationChanged");
+    super.onConfigurationChanged(newConfig);
+    /*
+    // Checks the orientation of the screen
+    if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
+      Toast.makeText(this, "landscape", Toast.LENGTH_SHORT).show();
+    }
+    else if (newConfig.orientation == Configuration.ORIENTATION_PORTRAIT) {
+      Toast.makeText(this, "portrait", Toast.LENGTH_SHORT).show();
+    }*/
   }
 }
