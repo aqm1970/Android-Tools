@@ -38,7 +38,8 @@ public class BasicTabListener<T extends Fragment> implements TabListener
     logEvent("selected");
     
     if (fragment != null) {
-      ft.attach(fragment);
+      //ft.attach(fragment);
+      ft.show(fragment);
     }
     else {
       fragment = Fragment.instantiate(activity, clazz.getName());
@@ -52,7 +53,10 @@ public class BasicTabListener<T extends Fragment> implements TabListener
     logEvent("unselected");
     
     if (fragment != null)
-      ft.detach(fragment);
+    {
+      //ft.detach(fragment);
+      ft.hide(fragment);
+    }
   }
   
   private void logEvent(final String event)
