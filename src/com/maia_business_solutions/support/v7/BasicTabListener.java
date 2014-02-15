@@ -42,9 +42,14 @@ public class BasicTabListener<T extends Fragment> implements TabListener
       ft.show(fragment);
     }
     else {
-      fragment = Fragment.instantiate(activity, clazz.getName());
+      fragment = createFragment();
       ft.add(contentID, fragment, tag);
     }
+  }
+
+  protected Fragment createFragment()
+  {
+    return Fragment.instantiate(activity, clazz.getName());
   }
 
   @Override
