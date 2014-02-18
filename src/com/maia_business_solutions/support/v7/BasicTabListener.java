@@ -38,8 +38,8 @@ public class BasicTabListener<T extends Fragment> implements TabListener
     logEvent("selected");
     
     if (fragment != null) {
-      //ft.attach(fragment);
-      ft.show(fragment);
+      ft.attach(fragment);
+      //ft.show(fragment);
     }
     else {
       fragment = createFragment();
@@ -59,8 +59,8 @@ public class BasicTabListener<T extends Fragment> implements TabListener
     
     if (fragment != null)
     {
-      //ft.detach(fragment);
-      ft.hide(fragment);
+      ft.detach(fragment);
+      //ft.hide(fragment);
     }
   }
   
