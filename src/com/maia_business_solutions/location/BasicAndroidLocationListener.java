@@ -34,11 +34,9 @@ public class BasicAndroidLocationListener implements LocationListener
     this.context = context;
     
     locationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
-    
-    onStart();
   }
 
-  public void onStart()
+  private void onStart()
   {
     // Request updates every 30 ft
     locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,
@@ -48,14 +46,25 @@ public class BasicAndroidLocationListener implements LocationListener
         UPDATE_RATE, UPDATE_DISTANCE_IN_METERS, this);
   }
   
+  private void onStop()
+  {
+    locationManager.removeUpdates(this);
+  }
+  
   public void addUpdateLocationListener(final UpdateAndroidLocationListener listener)
   {
+    if (listeners.size() == 0)
+      onStart();
+    
     listeners.add(listener);
   }
   
   public void removeUpdateLocationListener(final UpdateAndroidLocationListener listener)
   {
     listeners.remove(listener);
+    
+    if (listeners.size() == 0)
+      onStop();
   }
   
   @Override
@@ -110,11 +119,6 @@ public class BasicAndroidLocationListener implements LocationListener
       for (final UpdateAndroidLocationListener listener : listeners)
         listener.update(bestKnownLocation);
     }
-  }
-  
-  public void onStop()
-  {
-    locationManager.removeUpdates(this);
   }
   
   /** Determines whether one Location reading is better than the current Location fix
