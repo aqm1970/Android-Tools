@@ -25,7 +25,7 @@ public class BasicTabListener<T extends Fragment> implements TabListener
     this.clazz = clazz;
     this.contentID = id;
   }
-
+  
   @Override
   public void onTabReselected(Tab arg0, FragmentTransaction arg1)
   {
@@ -37,14 +37,10 @@ public class BasicTabListener<T extends Fragment> implements TabListener
   {
     logEvent("selected");
     
-    if (fragment != null) {
-      ft.attach(fragment);
-      //ft.show(fragment);
-    }
-    else {
+    if (fragment == null)
       fragment = createFragment();
-      ft.add(contentID, fragment, tag);
-    }
+    
+    ft.replace(contentID, fragment, tag);
   }
 
   protected Fragment createFragment()
@@ -56,12 +52,6 @@ public class BasicTabListener<T extends Fragment> implements TabListener
   public void onTabUnselected(Tab tab, FragmentTransaction ft)
   {
     logEvent("unselected");
-    
-    if (fragment != null)
-    {
-      ft.detach(fragment);
-      //ft.hide(fragment);
-    }
   }
   
   private void logEvent(final String event)
