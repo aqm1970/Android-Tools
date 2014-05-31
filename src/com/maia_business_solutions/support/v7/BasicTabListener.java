@@ -45,6 +45,8 @@ public class BasicTabListener<T extends Fragment> implements TabListener
 
   protected Fragment createFragment()
   {
+    Log.i(LOG_TAG, "Creating fragment " + clazz.getName());
+    
     return Fragment.instantiate(activity, clazz.getName());
   }
 
