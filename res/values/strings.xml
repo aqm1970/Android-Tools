@@ -2,4 +2,6 @@
 
     <string name="app_name">Tools</string>
 
+    <string name="play_services_error_msg">Google Play services are required for full app functionality</string>
+
 </resources>
