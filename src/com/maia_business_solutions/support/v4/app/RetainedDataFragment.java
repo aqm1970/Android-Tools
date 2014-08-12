@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentTransaction;
 
 public class RetainedDataFragment extends Fragment
 {
-  private static final String TAG = RetainedDataFragment.class.getCanonicalName();
+  public static final String TAG = RetainedDataFragment.class.getCanonicalName();
   
   private final Bundle dataBundle = new Bundle();
   
