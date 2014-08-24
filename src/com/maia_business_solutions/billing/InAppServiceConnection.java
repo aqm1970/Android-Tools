@@ -28,9 +28,25 @@ public class InAppServiceConnection implements ServiceConnection
   
   private IInAppBillingService service;
   
-  public IInAppBillingService getService()
+  private final String packageName;
+  private final ArrayList<String> skuList;
+  private Bundle skuBundle = null;
+  
+  public InAppServiceConnection(final String packageName,
+      final ArrayList<String> skuList)
   {
-    return service;
+    this.packageName = packageName;
+    this.skuList = skuList;
+  }
+  
+  public InAppServiceConnection(final String packageName, final String ... skus)
+  {
+    this(packageName, new ArrayList<String>(Arrays.asList(skus)));
+  }
+  
+  public Bundle getSkuBundle()
+  {
+    return skuBundle;
   }
   
   public void bindService(final Activity activity)
@@ -38,8 +54,7 @@ public class InAppServiceConnection implements ServiceConnection
     activity.bindService(new Intent(ACTION), this, Context.BIND_AUTO_CREATE);
   }
   
-  public Bundle getSkuDetails(final String packageName,
-      final ArrayList<String> skuList)
+  private Bundle getSkuDetails()
   {
     final Bundle skusBundle = new Bundle();
     
@@ -57,19 +72,15 @@ public class InAppServiceConnection implements ServiceConnection
     
     return retVal;
   }
-  
-  public Bundle getSkuDetails(final String packageName, final String ... skus)
-  {
-    return getSkuDetails(packageName,
-        new ArrayList<String>(Arrays.asList(skus)));
-  }
 
   @Override
   public void onServiceConnected(ComponentName name, IBinder service)
   {
     Log.i(LOG_TAG, "Established service connection to component: " + name);
     
-    this.service = IInAppBillingService.Stub.asInterface(service); 
+    this.service = IInAppBillingService.Stub.asInterface(service);
+    
+    skuBundle = getSkuDetails();
   }
 
   @Override
