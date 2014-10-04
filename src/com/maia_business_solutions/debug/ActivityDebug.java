@@ -16,55 +16,55 @@ abstract public class ActivityDebug extends Activity {
   protected void onCreate(Bundle savedInstanceState)
   {
     super.onCreate(savedInstanceState);
-    Log.d(getName(), "onCreate");
+    Log.i(getName(), "onCreate");
   }
   
   @Override
   protected void onStart()
   {
     super.onStart();
-    Log.d(getName(), "onStart");
+    Log.i(getName(), "onStart");
   }
 
   @Override
   protected void onResume()
   {
     super.onResume();
-    Log.d(getName(), "onResume");
+    Log.i(getName(), "onResume");
   }
 
   @Override
   protected void onPause()
   {
     super.onPause();
-    Log.d(getName(), "onPause");
+    Log.i(getName(), "onPause");
   }
 
   @Override
   protected void onStop()
   {
     super.onStop();
-    Log.d(getName(), "onStop");
+    Log.i(getName(), "onStop");
   }
   
   @Override
   protected void onDestroy()
   {
     super.onDestroy();
-    Log.d(getName(), "onDestroy");
+    Log.i(getName(), "onDestroy");
   }
 
   @Override
   protected void onRestart()
   {
     super.onRestart();
-    Log.d(getName(), "onRestart");
+    Log.i(getName(), "onRestart");
   }
   
   @Override
   public void onConfigurationChanged(Configuration newConfig)
   {
-    Log.d(getName(), "onConfigurationChanged");
+    Log.i(getName(), "onConfigurationChanged");
     super.onConfigurationChanged(newConfig);
     /*
     // Checks the orientation of the screen
