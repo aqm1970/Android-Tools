@@ -1,7 +1,7 @@
 package com.maia_business_solutions.support.v7;
 
-import android.app.Activity;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.ActionBar.Tab;
 import android.support.v7.app.ActionBar.TabListener;
@@ -11,19 +11,21 @@ public class BasicTabListener<T extends Fragment> implements TabListener
 {
   private final static String LOG_TAG = BasicTabListener.class.getName();
   
-  private Activity activity = null;
+  private FragmentActivity activity = null;
   private String tag = null;
   private Fragment fragment = null;
   private Class<T> clazz = null;
   private int contentID = 0;
   
-  public BasicTabListener(final Activity activity, final String tag,
+  public BasicTabListener(final FragmentActivity activity, final String tag,
       final Class<T> clazz, final int id)
   {
     this.activity = activity;
     this.tag = tag;
     this.clazz = clazz;
     this.contentID = id;
+    
+    fragment = activity.getSupportFragmentManager().findFragmentByTag(tag);
   }
   
   @Override

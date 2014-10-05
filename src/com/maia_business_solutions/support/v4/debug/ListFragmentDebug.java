@@ -13,7 +13,7 @@ public abstract class ListFragmentDebug extends ListFragment
   @Override
   public void onDestroyView()
   {
-    Log.d(getLogTag(), "ListFragment.onDestroyView");
+    Log.i(getLogTag(), "ListFragment.onDestroyView");
     
     super.onDestroyView();
   }
@@ -21,70 +21,70 @@ public abstract class ListFragmentDebug extends ListFragment
   @Override
   public void onViewCreated(View view, Bundle savedInstanceState)
   {
-    Log.d(getLogTag(), "ListFragment.onViewCreated");
+    Log.i(getLogTag(), "ListFragment.onViewCreated");
     super.onViewCreated(view, savedInstanceState);
   }
 
   @Override
   public void onActivityCreated(Bundle savedInstanceState)
   {
-    Log.d(getLogTag(), "ListFragment.onActivityCreated");
+    Log.i(getLogTag(), "ListFragment.onActivityCreated");
     super.onActivityCreated(savedInstanceState);
   }
 
   @Override
   public void onAttach(Activity activity)
   {
-    Log.d(getLogTag(), "ListFragment.onAttach");
+    Log.i(getLogTag(), "ListFragment.onAttach");
     super.onAttach(activity);
   }
 
   @Override
   public void onCreate(Bundle savedInstanceState)
   {
-    Log.d(getLogTag(), "ListFragment.onCreate)");
+    Log.i(getLogTag(), "ListFragment.onCreate)");
     super.onCreate(savedInstanceState);
   }
 
   @Override
   public void onDestroy()
   {
-    Log.d(getLogTag(), "ListFragment.onDestroy");
+    Log.i(getLogTag(), "ListFragment.onDestroy");
     super.onDestroy();
   }
 
   @Override
   public void onDetach()
   {
-    Log.d(getLogTag(), "ListFragment.onDetach");
+    Log.i(getLogTag(), "ListFragment.onDetach");
     super.onDetach();
   }
 
   @Override
   public void onPause()
   {
-    Log.d(getLogTag(), "ListFragment.onPause");
+    Log.i(getLogTag(), "ListFragment.onPause");
     super.onPause();
   }
 
   @Override
   public void onResume()
   {
-    Log.d(getLogTag(), "ListFragment.onResume");
+    Log.i(getLogTag(), "ListFragment.onResume");
     super.onResume();
   }
 
   @Override
   public void onStart()
   {
-    Log.d(getLogTag(), "ListFragment.onStart");
+    Log.i(getLogTag(), "ListFragment.onStart");
     super.onStart();
   }
 
   @Override
   public void onStop()
   {
-    Log.d(getLogTag(), "ListFragment.onStop");
+    Log.i(getLogTag(), "ListFragment.onStop");
     super.onStop();
   }
 }
