@@ -4,10 +4,11 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 
 public class RetainedDataFragment extends Fragment
 {
-  public static final String TAG = RetainedDataFragment.class.getCanonicalName();
+  public static final String TAG = RetainedDataFragment.class.getName();
   
   private final Bundle dataBundle = new Bundle();
   
@@ -36,6 +37,8 @@ public class RetainedDataFragment extends Fragment
       final FragmentTransaction ft = fm.beginTransaction();
       ft.add(retVal, TAG);
       ft.commit();
+      
+      Log.i(TAG, "Committed retained data fragment" + fm);
     }
     
     return retVal;
