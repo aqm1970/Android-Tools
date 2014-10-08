@@ -21,8 +21,8 @@ import com.maia_business_solutions.tools.R;
 
 public class GooglePlayServicesUtilsHelper
 {
-  private static long _24_HOURS_IN_MILLISECONDS = 1440000;
-  private static long _7_DAYS_IN_MILLISECONDS = 10080000;
+  private static long _24_HOURS_IN_MILLISECONDS = 86400000;
+  private static long _7_DAYS_IN_MILLISECONDS = 7 * _24_HOURS_IN_MILLISECONDS;
   
   private static final String REMIND_ME = "REMIND";
   
