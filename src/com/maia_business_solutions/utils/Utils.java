@@ -1,11 +1,14 @@
 package com.maia_business_solutions.utils;
 
+import java.io.BufferedReader;
 import java.io.Closeable;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.net.URL;
 
 import android.app.AlertDialog;
 import android.content.ActivityNotFoundException;
@@ -100,5 +103,28 @@ final public class Utils {
     builder.setNegativeButton("No", null);
     
     builder.create().show();
+  }
+  
+  public static String getDataFromURL(final String spec) throws IOException
+  {
+    final StringBuilder builder = new StringBuilder();
+    
+    BufferedReader reader = null;
+    
+    try {
+      final URL url = new URL(spec);
+      
+      reader = new BufferedReader(new InputStreamReader(url.openStream()));
+      
+      String line = null;
+      
+      while ( (line = reader.readLine()) != null)
+        builder.append(line);
+    }
+    finally {
+      close(reader);
+    }
+    
+    return builder.toString();
   }
 }
