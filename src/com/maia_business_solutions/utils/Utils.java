@@ -127,4 +127,18 @@ final public class Utils {
     
     return builder.toString();
   }
+  
+  public static String cap1stChar(String userIdea)
+  {
+    if (userIdea != null && userIdea.isEmpty() == false)
+    {
+      final char[] stringArray = userIdea.toCharArray();
+      
+      stringArray[0] = Character.toUpperCase(stringArray[0]);
+      
+      userIdea = new String(stringArray);
+    }
+      
+      return userIdea;
+  }
 }
