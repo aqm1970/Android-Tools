@@ -77,7 +77,8 @@ public class GooglePlayServicesUtilsHelper
    */
   public final static int CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
 
-  public static class ErrorDialogFragment extends DialogFragment {
+  private static class ErrorDialogFragment extends DialogFragment
+  {
     private static final int NEVER_REMIND_ME = -1;
     private int errorCode;
     
