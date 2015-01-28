@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ListFragment;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
 import android.view.View;
 
 public abstract class ListFragmentDebug extends ListFragment
@@ -42,7 +43,7 @@ public abstract class ListFragmentDebug extends ListFragment
   @Override
   public void onCreate(Bundle savedInstanceState)
   {
-    Log.i(getLogTag(), "ListFragment.onCreate)");
+    Log.i(getLogTag(), "ListFragment.onCreate");
     super.onCreate(savedInstanceState);
   }
 
@@ -87,5 +88,13 @@ public abstract class ListFragmentDebug extends ListFragment
     Log.i(getLogTag(), "ListFragment.onStop");
     
     super.onStop();
+  }
+  
+  @Override
+  public void onPrepareOptionsMenu(Menu menu)
+  {
+    super.onPrepareOptionsMenu(menu);
+    
+    Log.i(getLogTag(), "ListFragment.onPrepareOptionsMenu");
   }
 }
