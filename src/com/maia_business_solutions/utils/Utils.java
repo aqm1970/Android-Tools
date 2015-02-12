@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.net.URL;
 
 import android.app.AlertDialog;
@@ -140,5 +141,12 @@ final public class Utils {
     }
       
       return userIdea;
+  }
+  
+  public static boolean isInt(final double value)
+  {
+    final BigDecimal temp = new BigDecimal(value);
+    
+    return temp.scale() == 0;
   }
 }
