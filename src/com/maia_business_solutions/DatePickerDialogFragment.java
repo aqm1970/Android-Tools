@@ -9,7 +9,6 @@ import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.os.Bundle;
-import android.widget.CalendarView;
 import android.widget.DatePicker;
 
 public class DatePickerDialogFragment extends DialogFragment implements OnDateSetListener
@@ -60,21 +59,9 @@ public class DatePickerDialogFragment extends DialogFragment implements OnDateSe
   @Override
   public Dialog onCreateDialog(Bundle savedInstanceState)
   {
-    final DatePickerDialog dialog = new DatePickerDialog(getActivity(), this,
-        0, 0, 0);
-    
-    final DatePicker datePicker = dialog.getDatePicker();
-    
-    datePicker.setCalendarViewShown(true);
-    datePicker.setSpinnersShown(false);
-    
-    final CalendarView calendarView = datePicker.getCalendarView();
-    
-    calendarView.setShowWeekNumber(false);
-    calendarView.setShownWeekCount(3);
-    calendarView.setDate(calendar.getTimeInMillis(), false, true);
-    
-    return dialog;
+    return new DatePickerDialog(getActivity(), this,
+        calendar.get(Calendar.YEAR), calendar.get(Calendar.MONTH),
+        calendar.get(Calendar.DAY_OF_MONTH));
   }
   
   @Override
