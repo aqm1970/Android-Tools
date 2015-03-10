@@ -1,4 +1,4 @@
-package com.maia_business_solutions;
+package com.maia_business_solutions.support.v4.app;
 
 import java.util.Calendar;
 import java.util.Date;
@@ -7,8 +7,8 @@ import java.util.Vector;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.app.Dialog;
-import android.app.DialogFragment;
 import android.os.Bundle;
+import android.support.v4.app.DialogFragment;
 import android.widget.DatePicker;
 
 public class DatePickerDialogFragment extends DialogFragment implements OnDateSetListener
