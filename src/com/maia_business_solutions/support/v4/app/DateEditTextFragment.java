@@ -1,4 +1,4 @@
-package com.maia_business_solutions;
+package com.maia_business_solutions.support.v4.app;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -6,8 +6,8 @@ import java.util.Date;
 import java.util.Locale;
 
 import android.app.DatePickerDialog.OnDateSetListener;
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
