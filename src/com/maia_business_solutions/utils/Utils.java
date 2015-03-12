@@ -31,9 +31,15 @@ final public class Utils {
         closeable.close();
       }
       catch (IOException e) {
-        Log.w(Utils.class.getSimpleName(), e);
+        Log.w(NAME, e);
       }
     }
+  }
+  
+  public static void close(Closeable ... closeables)
+  {
+    for (final Closeable closeable : closeables)
+      close(closeable);
   }
   
   public static File copyToExternal(final Context context,
