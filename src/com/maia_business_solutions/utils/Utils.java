@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
+import java.math.BigDecimal;
 import java.net.URL;
 
 import android.app.AlertDialog;
@@ -30,9 +31,15 @@ final public class Utils {
         closeable.close();
       }
       catch (IOException e) {
-        Log.w(Utils.class.getSimpleName(), e);
+        Log.w(NAME, e);
       }
     }
+  }
+  
+  public static void close(Closeable ... closeables)
+  {
+    for (final Closeable closeable : closeables)
+      close(closeable);
   }
   
   public static File copyToExternal(final Context context,
@@ -140,5 +147,12 @@ final public class Utils {
     }
       
       return userIdea;
+  }
+  
+  public static boolean isInt(final double value)
+  {
+    final BigDecimal temp = new BigDecimal(value);
+    
+    return temp.scale() == 0;
   }
 }
