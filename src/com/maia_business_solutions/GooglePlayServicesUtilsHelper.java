@@ -1,18 +1,17 @@
-package com.maia_business_solutions.support.v7;
+package com.maia_business_solutions;
 
 import java.util.Date;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -21,15 +20,15 @@ import com.maia_business_solutions.tools.R;
 
 public class GooglePlayServicesUtilsHelper
 {
-  private static long _24_HOURS_IN_MILLISECONDS = 86400000;
-  private static long _7_DAYS_IN_MILLISECONDS = 7 * _24_HOURS_IN_MILLISECONDS;
+  private static long _24_HOURS_IN_MILLISECONDS = 1440000;
+  private static long _7_DAYS_IN_MILLISECONDS = 10080000;
   
   private static final String REMIND_ME = "REMIND";
   
   private static final String LOG_TAG =
     GooglePlayServicesUtilsHelper.class.getSimpleName();
   
-  public static boolean servicesConnected(final FragmentActivity activity)
+  public static boolean servicesConnected(final Activity activity)
   {
     if (activity == null)
       throw new NullPointerException("activity is null");
@@ -62,7 +61,7 @@ public class GooglePlayServicesUtilsHelper
         errorFragment.setData(resultCode);
 
         // Show the error dialog in the DialogFragment
-        errorFragment.show(activity.getSupportFragmentManager(),
+        errorFragment.show(activity.getFragmentManager(),
             "");
       }
     }
