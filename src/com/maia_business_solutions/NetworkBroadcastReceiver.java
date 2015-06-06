@@ -35,15 +35,16 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver
       final NetworkInfo networkInfo = manager.getActiveNetworkInfo();
       
       if (networkInfo != null && networkInfo.isConnected()) {
-        if (connected == false)
+        if (connected == false) {
           Log.d(LOG_TAG, "Connection to network: " + networkInfo.getTypeName());
-        
-        connected = true;
-        
-        if (listener != null)
-          listener.connected(context, intent);
+
+          connected = true;
+
+          if (listener != null)
+            listener.connected(context, intent);
+        }
       }
-      else {
+      else if (connected) {
         connected = false;
         
         if (listener != null)
