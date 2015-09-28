@@ -27,6 +27,19 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver
   
   public void registerReceiver(final Context context)
   {
+    registerReceiver(context, false);
+  }
+  
+  /**
+   * Register a BroadcastReceiver to be run in the main activity thread. The
+   * receiver will be called with any broadcast Intent that matches filter
+   * for {@link ConnectivityManager#CONNECTIVITY_ACTION}, in the main
+   * application thread. 
+   * @param context the context to register the filter
+   * @param fire fire the {@link ConnectionListener}
+   */
+  public void registerReceiver(final Context context, final boolean fire)
+  {
     context.registerReceiver(this, new IntentFilter(
         ConnectivityManager.CONNECTIVITY_ACTION));
     
@@ -38,6 +51,15 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver
     
     if (info != null)
       connected = info.isConnected();
+    else
+      connected = false;
+    
+    if (fire && listener != null) {
+      if (connected)
+        listener.connected(context, null);
+      else
+        listener.notConnected(context, null);
+    }
   }
   
   public void unregisterReceiver(final Context context)
@@ -91,16 +113,18 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver
   public static interface ConnectionListener
   {
     /**
-     * Connection established
+     * Fires when a network connection is established
      * @param context The Context in which the receiver is running.
-     * @param intent The Intent being received.
+     * @param intent The Intent being received; or null if this is an
+     * initialization action
      */
     public void connected(final Context context, final Intent intent);
     
     /**
-     * Not connected.
+     * Fires when a network connection is not established.
      * @param context The Context in which the receiver is running.
-     * @param intent The Intent being received.
+     * @param intent The Intent being received; or null if this is an
+     * initialization action.
      */
     public void notConnected(final Context context, final Intent intent);
   }
