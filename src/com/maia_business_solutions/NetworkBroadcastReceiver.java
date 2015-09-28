@@ -15,11 +15,6 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver
   private boolean connected = false;
   private ConnectionListener listener = null;
   
-  public NetworkBroadcastReceiver()
-  {
-    this(null);
-  }
-  
   public NetworkBroadcastReceiver(final ConnectionListener listener)
   {
     this.listener = listener;
