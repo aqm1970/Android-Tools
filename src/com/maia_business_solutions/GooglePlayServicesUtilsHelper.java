@@ -8,14 +8,14 @@ import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.SharedPreferences;
 import android.content.DialogInterface.OnClickListener;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
-import com.google.android.gms.common.GooglePlayServicesUtil;
+import com.google.android.gms.common.GoogleApiAvailability;
 import com.maia_business_solutions.tools.R;
 
 public class GooglePlayServicesUtilsHelper
@@ -37,7 +37,7 @@ public class GooglePlayServicesUtilsHelper
     
     // Check that Google Play services is available
     final int resultCode =
-      GooglePlayServicesUtil.isGooglePlayServicesAvailable(activity);
+      GoogleApiAvailability.getInstance().isGooglePlayServicesAvailable(activity);
     
     // If Google Play services is available
     if (ConnectionResult.SUCCESS == resultCode) {
@@ -94,8 +94,10 @@ public class GooglePlayServicesUtilsHelper
     public Dialog onCreateDialog(Bundle savedInstanceState) {
       final Activity activity = getActivity();
       
-      final Dialog dialog = GooglePlayServicesUtil.getErrorDialog(errorCode,
-          activity, CONNECTION_FAILURE_RESOLUTION_REQUEST);
+      final GoogleApiAvailability availability = GoogleApiAvailability.getInstance();
+      
+      final Dialog dialog = availability.getErrorDialog(activity, errorCode,
+          CONNECTION_FAILURE_RESOLUTION_REQUEST);
       
       final AlertDialog alertDialog = (AlertDialog)dialog;
       
