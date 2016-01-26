@@ -44,12 +44,23 @@ public class NetworkBroadcastReceiver extends BroadcastReceiver
     
     final NetworkInfo info = manager.getActiveNetworkInfo();
     
-    if (info != null)
+    final StringBuilder builder = new StringBuilder("Connected ");
+    
+    if (info != null) {
+      builder.append(" to ").append(info.getTypeName());
       connected = info.isConnected();
-    else
+    }
+    else {
       connected = false;
+    }
+    
+    builder.append(": ").append(connected);
+    
+    Log.d(LOG_TAG, builder.toString());
     
     if (fire && listener != null) {
+      Log.d(LOG_TAG, "Firing listener");
+      
       if (connected)
         listener.connected(context, null);
       else
