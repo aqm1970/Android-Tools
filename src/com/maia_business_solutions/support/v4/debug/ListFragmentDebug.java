@@ -87,4 +87,18 @@ public abstract class ListFragmentDebug extends ListFragment
     Log.i(getLogTag(), "ListFragment.onStop");
     super.onStop();
   }
+
+  @Override
+  public void onSaveInstanceState(Bundle outState)
+  {
+    Log.i(getLogTag(), "ListFragment.onSaveInstanceState");
+    super.onSaveInstanceState(outState);
+  }
+
+  @Override
+  public void onViewStateRestored(Bundle savedInstanceState)
+  {
+    Log.i(getLogTag(), "ListFragment.onViewStateRestored");
+    super.onViewStateRestored(savedInstanceState);
+  }
 }
