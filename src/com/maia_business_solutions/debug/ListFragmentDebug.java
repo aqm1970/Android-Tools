@@ -1,7 +1,7 @@
 package com.maia_business_solutions.debug;
 
-import android.app.Activity;
 import android.app.ListFragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -34,10 +34,10 @@ public abstract class ListFragmentDebug extends ListFragment
   }
 
   @Override
-  public void onAttach(Activity activity)
+  public void onAttach(Context context)
   {
     Log.i(getLogTag(), "ListFragment.onAttach");
-    super.onAttach(activity);
+    super.onAttach(context);
   }
 
   @Override

@@ -1,7 +1,7 @@
 package com.maia_business_solutions.debug;
 
-import android.app.Activity;
 import android.app.Fragment;
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +11,9 @@ public abstract class FragmentDebug extends Fragment
   protected abstract String getLogTag();
 
   @Override
-  public void onAttach(Activity activity)
+  public void onAttach(Context context)
   {
-    super.onAttach(activity);
+    super.onAttach(context);
     
     Log.i(getLogTag(), "onAttach");
   }
