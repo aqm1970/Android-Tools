@@ -1,6 +1,5 @@
 package com.maia_business_solutions;
 
-import android.app.Activity;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,17 +20,17 @@ public class AdFragment extends Fragment
   private AdView adView;
 
   @Override
-  public void onAttach(Activity activity)
+  public void onActivityCreated(Bundle savedInstanceState)
   {
-    super.onAttach(activity);
+    super.onActivityCreated(savedInstanceState);
     
     if (adView == null) {
-      adView = new AdView(activity);
+      adView = new AdView(getActivity());
       
       Log.i(LOG_TAG, "Instantiated 'adView'");
     }
     
-    Log.i(LOG_TAG, "onAttach");
+    Log.i(LOG_TAG, "onActivityCreated");
   }
 
   @Override
