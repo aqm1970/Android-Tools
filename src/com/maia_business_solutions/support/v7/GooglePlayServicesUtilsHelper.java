@@ -5,14 +5,13 @@ import java.util.Date;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Dialog;
+import android.app.DialogFragment;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -29,7 +28,7 @@ public class GooglePlayServicesUtilsHelper
   private static final String LOG_TAG =
     GooglePlayServicesUtilsHelper.class.getSimpleName();
   
-  public static boolean servicesConnected(final FragmentActivity activity)
+  public static boolean servicesConnected(final Activity activity)
   {
     if (activity == null)
       throw new NullPointerException("activity is null");
@@ -62,7 +61,7 @@ public class GooglePlayServicesUtilsHelper
         errorFragment.setData(resultCode);
 
         // Show the error dialog in the DialogFragment
-        errorFragment.show(activity.getSupportFragmentManager(),
+        errorFragment.show(activity.getFragmentManager(),
             "");
       }
     }
