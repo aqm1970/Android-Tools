@@ -1,6 +1,7 @@
 package com.maia_business_solutions.utils;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
@@ -18,5 +19,11 @@ public final class ActivityUtils
       if (manager != null)
         manager.hideSoftInputFromWindow(currentFocus.getWindowToken(), 0);
     }
+  }
+  
+  public static void startActivity(final Activity activity, final Class<?> clazz)
+  {
+    final Intent intent = new Intent(activity, clazz);
+    activity.startActivity(intent);
   }
 }
