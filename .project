@@ -3,8 +3,7 @@
 	<name>Tools</name>
 	<comment></comment>
 	<projects>
-		<project>android-support-v7-appcompat</project>
-		<project>google-play-services_lib</project>
+		<project>google-play-services</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
